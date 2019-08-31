@@ -20,7 +20,7 @@ class Snake(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet("QWidget { background-color: black }")
-        self.setFixedSize(Snake.BOARD_WIDTH, Snake.BOARD_WIDTH)
+        self.setFixedSize(Snake.BOARD_WIDTH, Snake.BOARD_HEIGHT)
         self.game_active = True
         self.timer = QtCore.QBasicTimer()
         self.direction = Snake.RIGHT
