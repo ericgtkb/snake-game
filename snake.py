@@ -1,7 +1,7 @@
 import sys
 import random
 from collections import deque
-from PySide2 import QtWidgets, QtCore, QtGui
+from PySide2 import QtWidgets, QtCore, QtGui, QtMultimedia
 
 
 class Snake(QtWidgets.QWidget):
@@ -30,6 +30,9 @@ class Snake(QtWidgets.QWidget):
                                   Snake.BLOCK_SIZE * Snake.NUM_BLOCKS_Y // 2))
         self.food = None
         self.new_food()
+
+        self.score_sound = QtMultimedia.QSound("score.wav")
+
         self.start_button = QtWidgets.QPushButton("Start", self)
         self.start_button.setStyleSheet("QWidget { background-color: white }")
         self.start_button.move(self.geometry().center() - self.start_button.geometry().center())
@@ -85,6 +88,7 @@ class Snake(QtWidgets.QWidget):
 
     def check_food(self):
         if self.snake_coords[0] == self.food:
+            self.score_sound.play()
             self.new_food()
             return True
         else:
